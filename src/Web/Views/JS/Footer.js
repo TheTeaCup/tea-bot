@@ -1,0 +1,1 @@
+function goto(id) { window.location = `https://teabot.mythicalbots.xyz${id}`; }

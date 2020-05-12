@@ -1,0 +1,12 @@
+/node_modules
+/.cache
+/dist
+src/Bot/Database
+src/Bot/Events/guildMemberAdd
+src/Bot/Events/guildMemberRemove
+src/Bot/Events/message
+src/Bot/Handlers/uptimeTracker
+/bin
+/data
+
+# hidden data so it couldnt be messed with
