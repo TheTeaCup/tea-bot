@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= Guild.name %> </title>
+    <link href="<%= Guild.iconURL; %>" rel="icon" type="image/x-icon">
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="<%- ShortDesc %>">
+    <meta name="keywords" content="Discord Bot List"/>
+  
+    <meta name="twitter:card" value="summary" />
+    <meta name="twitter:title" content="<%= Guild.name %> |" />
+    <meta name="twitter:description" content="<%- ShortDesc %>" />
+    <meta name="twitter:image" content='<%= Guild.iconURL; %>'>
+    <meta name="theme-color" content="#800080">
+    <meta property="og:title" content="<%= Guild.name %> " />
+    <meta property="og:url" content="https://teabot.mythicalbots.xyz/server/<%= Guild.id %>" />
+    <meta property="og:description" content="<%- ShortDesc %>" />
+    <meta property="og:image" content='<%= Guild.iconURL; %>' />
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+    <script src="https://kit.fontawesome.com/75db8f9097.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" type="text/css"> 
+
+    <link rel="stylesheet" id="cssproto" href="/css/light_index.css">
+    <link rel="stylesheet" href="https://mythicalbots.xyz/css/bots.css">
+    <link rel="stylesheet" href="https://mythicalbots.xyz//css/github-markdown.css"> 
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,400,700" rel="stylesheet">
+    
+  </head>
+  
+   <nav class="is-widescreen is-mobile" id="menu">
+    <center>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav"> 
+            <li class="nav-item">
+            <div class="dropdown">
+              <button onclick=goto("/") class="dropbtn">Home</button>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button onclick=goto("/invite") class="dropbtn">Discord</button>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button onclick=goto("/login") class="dropbtn">Add Bot</button>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button onclick=goto("/servera") class="dropbtn">Servers</button>
+              </div>
+            </li> 
+    <% if(user) { %> 
+<div class="dropdown">
+    <button class="dropbtn">More</button>
+    <div class="dropdown-content">
+      <a href="/terms-of-service">Terms of Service</a>
+      <a rel="nofollow" target="blank" href="https://docs.mythicalbots.xyz/">Docs</a>
+      <a href="/feedback">Feedback</a>
+    <div class="dropdown-divider"></div> <a onClick="toggleDarkMode (this)"><i class="fas fa-sync-alt"></i> Style Switcher</a>
+  </div>
+</div> 
+  <% } else { %>
+<div class="dropdown">
+  <button class="dropbtn">More</button>
+  <div class="dropdown-content">
+    <a href="/terms-of-service">Terms of Service</a>
+    <a rel="nofollow" target="blank" href="https://docs.mythicalbots.xyz/">Docs</a>
+    <div class="dropdown-divider"></div> <a onClick="toggleDarkMode (this)"><i class="fas fa-sync-alt"></i> Style Switcher</a> 
+    </div>
+</div> 
+<% } %> 
+          </div> 
+        </div>  
+        <ul class="navbar-nav">  
+<% if(user) {  %>  
+  <% if(Mythical.Staff.includes(user.id)) { %> 
+          <div class="dropdown">
+            <button class="dropbtn">
+              <a>Staff Settings</a>
+            </button>
+            <div class="dropdown-content"> 
+  <% if(Mythical.Developers.includes(user.id)) { %>  
+              <a href="/admin">Admin</a> 
+              <% } %> 
+              <a href="/me/queue">Queue</a>
+              <a href="/shuffle">Shuffle Bots</a>
+            </div>
+          </div>
+          <% } %>
+          <div class="dropdown">
+            <button class="dropbtn">
+              <img src="https://mythicalbots.xyz/bot/<%=user.id%>/avatar" width="30" height="30" class="d-inline-block align-top rounded-circle" style="vertical-align: middle; width: 38px !important; height: 38px !important;" alt=""></button>
+            <div class="dropdown-content">
+              <a href="/user/<%= user.id%>">Profile</a>
+              <a href="/me">Your Bots</a>
+              <div class="dropdown-divider"></div> 
+              <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div> 
+          <% } else { %> 
+          <div class=navbar-item>
+            <div class=buttons>
+              <a class="button btn is-blurple" onclick=goto("/login?redirect=/server/<%= Guild.id %>")>
+                <i class="fab fa-discord"></i>&nbsp; Login</a>
+            </div>
+          </div>
+          <% } %> 
+        </ul> 
+      </nav> 
+    </center> 
+  </nav>
+    <noscript><br><div class="alert alert-warning alert-dismissible fade show" role="alert">We're sorry but client doesn't work properly without JavaScript enabled. Please enable it to continue.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div></noscript>
+ </body>
+<!-- Content -->
+	<div class="index-container" style="background-color: none;">
+		<div class="text-center">
+		
+			<img class="server-avatar" src="<%= Guild.iconURL; %>" style="outline-style:red;" onerror="this.onerror=null;this.src='https://i.imgur.com/2otMem9.png';">
+			<p class="server-name" style="outline-style:black;" title="<%= Guild.name %>"><%= Guild.name %></p>
+<% if(Tags) { %>
+			 <ul class="tags">
+<% for(var i=0; i < Tags.length; i++) { %> 
+        <a class="btn btn-success" href="/tags?q=<%- Tags[i] %>"><%-	Tags[i] %></a>	
+<% } %>
+			 </ul>
+<% } %>
+		</div>
+	</div>
+
+	<div class="container" style="background-color: none;">
+		<div class="row server-container">
+		  <div class="col-lg-3">
+		  
+			<div class="card server-info">
+			  <div class="card-body">
+				<h5 class="le card-title" styele="font-size:25px;">Server Info</h5>
+				<ul class="list-group list-group-flush">
+          <li class="le list-group-item">Owner: <a href="/user/<%= Guild.owner.id %>"><%= Mythical.users.get(Guild.owner.id).tag%></a></li>
+				  <li class="le list-group-item">Status: <%= Status %></li>
+				  <li class="le list-group-item">Members: <%= Guild.memberCount %></li>
+       <li class="le list-group-item">Online: <%= Guild.members.filter(m => m.presence.status === 'online').size %></li>
+          <% if(timeObj === "n/a") { %>  <li class="le list-group-item">Last Bump: Never</li> <% } else { %>
+          <% if(timeObj.hours === 0) { %> <li class="le list-group-item">Last Bumped: <%= timeObj.minutes %> mins ago</li> <% } else { %> <li class="le list-group-item">Last Bumped: <%= timeObj.hours %> hours ago</li> <% } %>
+          <% } %>
+				</ul>
+			  </div>
+			</div>
+      <% if(user){ %>
+      <a class="btn btn-bump btn-block" onclick=goto("/server/<%= Guild.id %>/bump") style="margin-bottom: 15px; background:#b2c8d2" rel="nofollow" >Bump the server</a>
+      <% } %>
+			<a class="btn btn-success btn-block" onclick=goto("/server/<%= Guild.id %>/invite") style="margin-bottom: 15px;" rel="nofollow" target="_blank">Join the server</a> 
+        <% if(website) { %>
+          <a class="btn btn-success btn-block" href="<%- website %>" style="margin-bottom: 15px;" rel="nofollow" target="_blank">Website</a> 
+        <% } %>
+      <% if(user){ %>
+        <% if(Allowed.includes(user.id)) { %>
+        <br><hr>  <p class="mb-0" style="color:yellow">User Controls</p>
+        <a class="btn btn-warning btn-block" onclick=goto("/server/<%= Guild.id %>/edit") style="margin-bottom: 15px;" rel="nofollow" target="_blank">Edit Server</a>
+        <% } %>
+          <% if(Mythical.Staff.includes(user.id)) { %>
+         <br><hr>  <p class="mb-0" style="color:yellow">Staff Controls</p>
+          <a class="btn btn-danger btn-block" onclick=goto("/server/<%= Guild.id %>/removedescs") style="margin-bottom: 15px;" rel="nofollow" target="_blank">Moderate All Descriptions</a>
+          <a class="btn btn-success btn-block" onclick=goto("/server/<%= Guild.id %>/approve") style="margin-bottom: 15px;" rel="nofollow" target="_blank">Approve Server</a>
+       <% if(Mythical.Developers.includes(user.id)) { %>
+        <br><hr><p class="mb-0" style="color:yellow">Admin Controls</p>
+          <a class="btn btn-blue btn-block" onclick=goto("/server/<%= Guild.id %>/feature") style="margin-bottom: 15px;" rel="nofollow" target="_blank">Feature Server</a>
+          <a class="btn btn-orange btn-block" onclick=goto("/server/<%= Guild.id %>/official") style="margin-bottom: 15px;" rel="nofollow" target="_blank">Verify Server</a>
+       
+           
+          <% } %>
+       <% } %>
+      <% } %>
+		  </div>
+		  <div class="col-lg-9">
+                  
+<% if(UpV === "123"){ %>
+       <br>
+<div class="container">
+ <center>
+   <div class="row" role="alert">
+     <div class="col-md-12" role="alert">
+       <div class="alert alert-primary alert-success" role="alert">
+         <button type="button" class="close" data-dismiss="alert">×</button>
+         <h4 class="alert-heading">Done!</h4>
+         <p class="mb-0">You Upvoted <%= Guild.name %></p>
+      </div>
+    </div>
+  </div>
+ </center>
+</div>
+<% } %>
+        
+<% if(hr){ %>
+       <br>
+<div class="container">
+ <center>
+   <div class="row" role="alert">
+     <div class="col-md-12" role="alert">
+       <div class="alert alert-primary alert-danger" role="alert">
+         <button type="button" class="close" data-dismiss="alert">×</button>
+         <h4 class="alert-heading">Oops, there is a problem..</h4>
+         <p class="mb-0">You can upvote this server in <bold><%= hr %> Hours(s) & <%= min %> Minute(s)</bold></p>
+      </div>
+    </div>
+  </div>
+ </center>
+</div>
+<% } else if(min){ %>
+       <br>
+<div class="container">
+ <center>
+   <div class="row" role="alert">
+     <div class="col-md-12" role="alert">
+       <div class="alert alert-primary alert-danger" role="alert">
+         <button type="button" class="close" data-dismiss="alert">×</button>
+         <h4 class="alert-heading">Oops, there is a problem..</h4>
+         <p class="mb-0">You can upvote this server in <bold><%= min %> Minute(s)</bold></p>
+      </div>
+    </div>
+  </div>
+ </center>
+</div>
+<% } %>
+        
+			<div class="card">
+			  <div class="card-body">
+			<!--	<h5 class="card-title">Bot Description</h5> -->
+				<div class="le card-text server-desc"><%- html %></div>
+				
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</div>
+  
+<style>
+.index-container { background: url('https://cdn.glitch.com/8e0408fa-48db-4caa-ba27-6d61a0c97be0%2Fsomet%20for%20mbl.png?v=1562189937858') }
+hr{margin-top:16px;margin-top:1rem;margin-bottom:16px;margin-bottom:1rem;border:0;border-top:1px solid rgba(0,0,0,.1)}
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{margin-bottom:8px;margin-bottom:.5rem;font-weight:500;line-height:1.2}
+.h1,h1{font-size:40px;font-size:2.5rem}
+.h2,h2{font-size:32px;font-size:2rem}
+.h3,h3{font-size:28px;font-size:1.75rem}
+.h4,h4{font-size:24px;font-size:1.5rem}
+.h5,h5{font-size:20px;font-size:1.25rem}
+.h6,h6{font-size:16px;font-size:1rem}
+.lead{font-size:20px;font-size:1.25rem;font-weight:300}
+hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0;overflow:visible}
+h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:8px;margin-bottom:.5rem}
+p{margin-top:0;margin-bottom:16px;margin-bottom:1rem}
+  
+  
+</style>
+  
+  <%- include('./Blocks/Footer.ejs') %>
+</html>

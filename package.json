@@ -1,0 +1,52 @@
+{
+  "name": "mythical-bots-2",
+  "version": "0.0.1",
+  "description": "A simple Node app built on Express, instantly up and running.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "connect-mongo": "^2.0.3",
+    "discord.js": "*",
+    "ejs": "^3.1.2",
+    "enmap": "^4.8.1",
+    "enmap-sqlite": "^2.0.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^3.20.0",
+    "parse-ms": "^2.0.0",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.3",
+    "markdown-it": "*",
+    "socket.io": "^2.2.0",
+    "snekfetch": "^4.0.4",
+    "cookie-parser": "^1.4.4",
+    "register-service-worker": "^1.6.2",
+    "ffmepg": "^1.0.2",
+    "node-opus": "^0.3.1",
+    "csurf": "^1.11.0",
+    "wumpfetch": "^0.3.0",
+    "moment": "^2.24.0",
+    "js-search": "^1.4.3",
+    "express-rate-limit": "^5.1.1",
+    "quick.db": "^6.3.2",
+    "canvas": "^2.2.0",
+    "mythical-api": "^0.4.0",
+    "jimp": "^0.9.3",
+    "simple-youtube-api": "^5.2.1",
+    "ytdl-core": "^1.0.6"
+  },
+  "engines": {
+    "node": "11.6.0"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/mythical-bots"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
